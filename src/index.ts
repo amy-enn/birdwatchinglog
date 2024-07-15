@@ -28,6 +28,8 @@ window.onload = () => {
         objectStore.createIndex('location.latitude', 'location.latitude', { unique: false });
 
         objectStore.createIndex('location.longitude', 'location.longitude', { unique: false });
+
+        objectStore.createIndex('date', 'date', { unique: false });
     };
 
     DBRequest.onsuccess = (event: Event) => {
@@ -55,6 +57,8 @@ window.onload = () => {
         let notes = (document.getElementById('notes') as HTMLTextAreaElement).value;
 
         addSighting(species, sex, latitude, longitude, date, notes);
+
+        resetForm();
     });
 };
 
@@ -75,12 +79,15 @@ function addSighting(species: string, sex: string, latitude: number, longitude: 
 }
 
 function displaySightings() {
-    const transaction = db.transaction(['sightings'], 'readonly');
-    const objectStore = transaction.objectStore('sightings');
-    const request = objectStore.getAll();
+    let transaction = db.transaction(['sightings'], 'readonly');
+    let objectStore = transaction.objectStore('sightings');
+    let request = objectStore.getAll();
   
     request.onsuccess = (event: Event) => {
-      const sightings = (event.target as IDBRequest).result as Sighting[];
+      let sightings = (event.target as IDBRequest).result as Sighting[];
+
+      // sort the birds by sighting date rather than by entry date
+      sightings = sightings.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
       const sightingsList = document.getElementById('sightingsList')!;
       sightingsList.innerHTML = '';
   
@@ -90,4 +97,8 @@ function displaySightings() {
         sightingsList.appendChild(listItem);
       });
     };
+  }
+
+  function resetForm() {
+    (document.getElementById('birdForm') as HTMLFormElement).reset();
   }
