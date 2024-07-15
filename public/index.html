@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bird-Watching Log</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Bird-Watching Log</h1>
+    <h2>~ feat. the IndexedDB browser API ~</h2>
+    <form id="birdForm">
+        <input type="text" id="species" placeholder="Species" required>
+        <input type="text" id="location" placeholder="Location" required>
+        <input type="date" id="date" required>
+        <textarea id="notes" placeholder="Notes"></textarea>
+        <button type="submit">Add Birb</button>
+    </form>
+
+    <ul id="sightingsList"></ul>
+
+    <script src="dist/index.js"></script>
+</body>
+</html>
