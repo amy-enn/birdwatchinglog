@@ -1,17 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bird-Watching Log</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <h1>Bird-Watching Log</h1>
     <h2>~ feat. the IndexedDB browser API ~</h2>
+
     <form id="birdForm">
+        <h4>Bird sighted:</h4>
         <input type="text" id="species" placeholder="Species" required>
-        <input type="text" id="location" placeholder="Location" required>
+        <select id="sex" required>
+            <option value="unknown">Unknown</option>
+            <option value="female">Female</option>
+            <option value="male">Male</option>
+        </select>
+        <h4>Location:</h4>
+        <input type="text" id="latitude" placeholder="Latitude" required>
+        <input type="text" id="longitude" placeholder="Longitude" required>
+        <h4>Date of sighting:</h4>
         <input type="date" id="date" required>
         <textarea id="notes" placeholder="Notes"></textarea>
         <button type="submit">Add Birb</button>
@@ -19,6 +31,7 @@
 
     <ul id="sightingsList"></ul>
 
-    <script src="dist/index.js"></script>
+    <script src="../dist/index.js"></script>
 </body>
+
 </html>
