@@ -29,9 +29,10 @@ textarea, select {
 button {
     padding: .5rem 1rem;
     font-weight: bold;
-    background-color: black;
+    background-color: rgb(29, 29, 29);
     border: 3px solid white;
     color: white;
+    cursor: pointer;
 }
 
 ul {

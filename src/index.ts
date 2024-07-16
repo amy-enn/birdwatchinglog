@@ -1,3 +1,6 @@
+import * as L from 'leaflet';
+import 'leaflet/dist/leaflet.css';
+
 interface Sighting {
     id?: number;
     species: string;
@@ -11,6 +14,7 @@ interface Sighting {
 }
 
 let db: IDBDatabase;
+let map: L.Map;
 
 window.onload = () => {
 
