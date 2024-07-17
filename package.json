@@ -4,16 +4,16 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "start": "http-server ./public -c-1"
+    "start": "lite-server"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
   "devDependencies": {
     "@types/leaflet": "^1.9.12",
     "@types/node": "^20.14.10",
-    "typescript": "^5.5.3"
+    "typescript": "^5.5.3",
+    "lite-server": "^2.6.1"
   },
   "dependencies": {
     "leaflet": "^1.9.4"

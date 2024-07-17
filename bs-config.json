@@ -1,0 +1,10 @@
+{
+    "server": {
+      "baseDir": "./public",
+      "routes": {
+        "/dist": "dist",
+        "/node_modules": "node_modules"
+      }
+    }
+  }
+  

@@ -18,6 +18,12 @@ let map: L.Map;
 
 window.onload = () => {
 
+    map = L.map('map').setView([51.505, -0.09], 13);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+
     let DBRequest = indexedDB.open('BirdWatchingDB', 1);
 
     DBRequest.onupgradeneeded = (event: IDBVersionChangeEvent) => {
@@ -86,23 +92,30 @@ function displaySightings() {
     let transaction = db.transaction(['sightings'], 'readonly');
     let objectStore = transaction.objectStore('sightings');
     let request = objectStore.getAll();
-  
+
     request.onsuccess = (event: Event) => {
-      let sightings = (event.target as IDBRequest).result as Sighting[];
+        let sightings = (event.target as IDBRequest).result as Sighting[];
 
-      // sort the birds by sighting date rather than by entry date
-      sightings = sightings.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-      const sightingsList = document.getElementById('sightingsList')!;
-      sightingsList.innerHTML = '';
-  
-      sightings.forEach(sighting => {
-        const listItem = document.createElement('li');
-        listItem.textContent = `${sighting.date}: ${sighting.species} (${sighting.sex}) at (${sighting.location.latitude}, ${sighting.location.longitude}) - ${sighting.notes}`;
-        sightingsList.appendChild(listItem);
-      });
+        // sort the birds by sighting date rather than by entry date
+        sightings = sightings.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+        const sightingsList = document.getElementById('sightingsList')!;
+        sightingsList.innerHTML = '';
+
+        sightings.forEach(sighting => {
+            const listItem = document.createElement('li');
+            listItem.textContent = `${sighting.date}: ${sighting.species} (${sighting.sex}) at (${sighting.location.latitude}, ${sighting.location.longitude}) - ${sighting.notes}`;
+            sightingsList.appendChild(listItem);
+        });
     };
-  }
+}
 
-  function resetForm() {
+// resets the form after birb submission
+function resetForm() {
     (document.getElementById('birdForm') as HTMLFormElement).reset();
-  }
+}
+
+// display markers for locations on map of birb sightings
+function addMarker(latitude: number, longitude: number, species: string, date: string, sex: string, notes: string) {
+    const marker = L.marker([latitude, longitude]).addTo(map);
+    marker.bindPopup(`<b>${species}</b><br>Date: ${date}<br>Sex: ${sex}<br>Notes: ${notes}`).openPopup();
+}
