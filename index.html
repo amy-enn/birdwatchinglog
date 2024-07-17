@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bird-Watching Log</title>
+    <link rel="icon" href="/bird.png" type="image/x-icon">
+</head>
+
+<body>
+    <h1>Bird-Watching Log</h1>
+    <h2>~ feat. the IndexedDB browser API ~</h2>
+
+    <form id="birdForm">
+        <h3>Bird sighted:</h3>
+        <input type="text" id="species" placeholder="Species" required>
+        <select id="sex" required>
+            <option value="unknown">Unknown</option>
+            <option value="female">Female</option>
+            <option value="male">Male</option>
+        </select>
+        <h3>Location:</h3>
+        <input type="text" id="latitude" placeholder="Latitude" required>
+        <input type="text" id="longitude" placeholder="Longitude" required>
+        <h3>Date of sighting:</h3>
+        <input type="date" id="date" required>
+        <h3>Notes:</h3>
+        <textarea id="notes" placeholder="Notes"></textarea>
+        <button type="submit">Add Birb</button>
+    </form>
+
+    <h3>Birbs I've Seen:</h3>
+    <ul id="sightingsList"></ul>
+
+    <div id="map" style="height: 500px;"></div>
+
+    <script type="module" src="src/main.ts"></script>
+</body>
+
+</html>
