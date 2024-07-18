@@ -9,31 +9,47 @@
 </head>
 
 <body>
-    <h1>Bird-Watching Log</h1>
-    <h2>~ feat. the IndexedDB browser API ~</h2>
+  <header>
+    <img id="headerImg" src="/headerimg.png" alt="header image of a bird flying over a moonlit mountain range">
+    <div class="header-box">
+      <div class="header-text">
+        <h1>Bird-Watching Log</h1>
+        <h2>~ feat. the IndexedDB Web API ~</h2>
+      </div>
+    </div>
+    </header>
+<main>
+  <form id="birdForm">
+    <h3>Bird Details:</h3>
+    <div class="bird-details">
+      <input type="text" id="species" placeholder="Species" required>
+      <select id="sex" required>
+        <option value="unknown">Sex unknown</option>
+        <option value="female">Female</option>
+        <option value="male">Male</option>
+      </select>
+    </div>
+    <h3>Location:</h3>
+    <div class="bird-details">
+      <input type="text" id="latitude" placeholder="Latitude" required>
+      <input type="text" id="longitude" placeholder="Longitude" required>
+    </div>
+      <h3>Date of sighting:</h3>
+    <input type="date" id="date" required>
+    <h3>Notes:</h3>
+    <textarea id="notes" placeholder="Notes"></textarea>
+    <button type="submit">Add Birb</button>
+  </form>
+  
+  <h3 id="sightings-heading">Birbs I've Seen:</h3>
+  <ul id="sightingsList"></ul>
+</main>
 
-    <form id="birdForm">
-        <h3>Bird sighted:</h3>
-        <input type="text" id="species" placeholder="Species" required>
-        <select id="sex" required>
-            <option value="unknown">Unknown</option>
-            <option value="female">Female</option>
-            <option value="male">Male</option>
-        </select>
-        <h3>Location:</h3>
-        <input type="text" id="latitude" placeholder="Latitude" required>
-        <input type="text" id="longitude" placeholder="Longitude" required>
-        <h3>Date of sighting:</h3>
-        <input type="date" id="date" required>
-        <h3>Notes:</h3>
-        <textarea id="notes" placeholder="Notes"></textarea>
-        <button type="submit">Add Birb</button>
-    </form>
+    <div id="map" style="height: 400px; width: 500px;"></div>
 
-    <h3>Birbs I've Seen:</h3>
-    <ul id="sightingsList"></ul>
-
-    <div id="map" style="height: 500px;"></div>
+    <footer>
+      <p>An app by <a href="https://github.com/amy-enn">amy-enn</a></p>
+    </footer>
 
     <script type="module" src="src/main.ts"></script>
 </body>

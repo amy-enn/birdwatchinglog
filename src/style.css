@@ -17,50 +17,109 @@
 }
 
 body {
-  margin: 20px;
-  background-color: black;
+  margin: 0;
+  padding: 0;
+  background-color: var(--dark-charcoal);
+}
+
+header {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+
+  & h1,
+  h2 {
+    color: var(--deep-blue);
+  }
+
+  & #headerImg {
+    width: 100%;
+    height: auto;
+    max-height: 200px;
+    object-fit: cover;
+  }
+
+  & .header-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    padding: 20px;
+    background-color: var(--soft-grey);
+    opacity: 95%;
+  }
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: 0 auto;
 }
 
 form {
   margin-bottom: 20px;
-  display: flex;
-  flex-direction: column;
-  width: 80%;
+  width: 100%;
+
+  & .bird-details {
+    display: flex;
+    flex-direction: row;
+  }
 }
 
+
 input,
-textarea, select {
-  display: block;
+textarea,
+select {
   margin-bottom: 10px;
   padding: 8px;
   width: 100%;
   box-sizing: border-box;
-  background-color: rgb(68, 68, 68);
-  color: white;
+  background-color: var(--soft-grey);
+  color: var(--deep-blue);
 }
 
-button {
-  padding: .5rem 1rem;
-  font-weight: bold;
-  background-color: rgb(29, 29, 29);
-  border: 3px solid white;
-  color: white;
-  cursor: pointer;
+input::placeholder, textarea::placeholder {
+  color: var(--deep-blue);
+  opacity: 100%;
 }
 
-ul {
-  list-style-type: none;
-  padding: 0;
-}
+  button {
+    padding: .5rem 1rem;
+    font-weight: bold;
+    background-color: var(--deep-blue);
+    border: 3px solid var(--soft-grey);
+    color: var(--soft-grey);
+    cursor: pointer;
+  }
 
-li {
-  padding: 8px;
-  border: 1px solid #7c7c7c;
-  margin-bottom: 5px;
-  background-color: rgb(68, 68, 68);
-}
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0 auto;
+  }
 
-h3 {
-  margin-bottom: 2px;
-  text-decoration: underline;
-}
+  li {
+    padding: 8px;
+    border: 1px solid #7c7c7c;
+    margin-bottom: 5px;
+    background-color: var(--soft-grey);
+    color: var(--deep-blue);
+  }
+
+  h3 {
+    margin-bottom: 2px;
+    text-decoration: underline;
+  }
+
+  #map {
+    margin: 0 auto;
+    /* border-radius: 15px; */
+    border: 10px outset var(--deep-blue);
+  }
+
+  footer {
+    padding: 0;
+    margin: 0;
+  }
